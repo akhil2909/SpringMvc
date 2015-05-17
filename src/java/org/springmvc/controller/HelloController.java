@@ -24,7 +24,7 @@ public class HelloController {
 
    @RequestMapping("/welcome")
     public ModelAndView helloWorld() {
-        ModelAndView modelandview = new ModelAndView("index");
+        ModelAndView modelandview = new ModelAndView("social");
         modelandview.addObject("welcomeMessage", "Hi User, welcome to the first Spring MVC Application");
         return modelandview;
     }
