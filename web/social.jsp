@@ -89,8 +89,7 @@
                 FB.api('/me', function(response) {
                     //console.log('resp: '+ String(response));
                     console.log('Successful login for: ' + response.name + ' Email ' + response.email + ' DOB ' + response.dob);
-                    document.getElementById('status').innerHTML =
-                            'Thanks for logging in, ' + response.name + ' Email  ' + response.email + '\n DOB : ' + response.address;
+                    document.getElementById('status').innerHTML =  'Thanks for logging in, ' + JSON.stringify(response) ;
                 });
             }
         </script>
@@ -168,23 +167,24 @@
                         }).then(function(res) {
                             var profile = res.result;
                             //console.log("prifiel"+profile);
+                               document.getElementById('profile').innerHTML =
+                            'Thanks for logging to google plus, ' +JSON.stringify(res);     
+//                            console.log("dob+" + profile.occupation + "\n gender : " + profile.gender);
 
-                            console.log("dob+" + profile.occupation + "\n gender : " + profile.gender);
-
-                            console.log(profile);
-                            $('#profile').empty();
-                            $('#profile').append(
-                                    $('<p><img src=\"' + profile.image.url + '\"></p>'));
-                            $('#profile').append(
-                                    $('<p>Hello ' + profile.displayName + '!<br />Tagline: ' +
-                                            profile.tagline + '<br />About: ' + profile.aboutMe + '</p>'));
-                            if (profile.emails) {
-                                $('#profile').append('<br/>Emails: ');
-                                for (var i = 0; i < profile.emails.length; i++) {
-                                    $('#profile').append(profile.emails[i].value).append(' ');
-                                }
-                                $('#profile').append('<br/>');
-                            }
+//                            console.log(profile);
+//                            $('#profile').empty();
+//                            $('#profile').append(
+//                                    $('<p><img src=\"' + profile.image.url + '\"></p>'));
+//                            $('#profile').append(
+//                                    $('<p>Hello ' + profile.displayName + '!<br />Tagline: ' +
+//                                            profile.tagline + '<br />About: ' + profile.aboutMe + '</p>'));
+//                            if (profile.emails) {
+//                                $('#profile').append('<br/>Emails: ');
+//                                for (var i = 0; i < profile.emails.length; i++) {
+//                                    $('#profile').append(profile.emails[i].value).append(' ');
+//                                }
+//                                $('#profile').append('<br/>');
+//                            }
                             if (profile.cover && profile.coverPhoto) {
                                 $('#profile').append(
                                         $('<p><img src=\"' + profile.cover.coverPhoto.url + '\"></p>'));
@@ -265,8 +265,9 @@
                     console.log("linkedin");
                      console.log(data);
 //                     var member = data.values[0];
+//document.getElementById('status').innerHTML =  'Thanks for logging in, ' + JSON.stringify(response) ;
                 document.getElementById('indiv').innerHTML =
-                            'Thanks for logging to linkedin, ' + data.firstName +" "+data.lastName;
+                            'Thanks for logging to linkedin, ' +JSON.stringify(data);
               
             }
 
@@ -286,16 +287,7 @@
     <body>
        
         <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id))
-                    return;
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
-                fjs.parentNode.insertBefore(js,
-                        fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
+      
         <div class="fb-login-button" data-max-rows="0" data-size="large" data-show-faces="false" data-auto-logout-link="true" scope="public_profile,email" onlogin="checkLoginState();"></div>
         <div id="status"></div>
         <br>
@@ -311,7 +303,7 @@
         </span>
         <div id="authOps" style="display:none"></div>
         <div id="profile"></div>  
-        <br>
+        <br>   
         <script type="in/Login"></script>
         <div id="indiv"></div>
     </body>
