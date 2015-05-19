@@ -13,9 +13,9 @@
     </head>
     <body>
         <h1>Login</h1>
-        <form method="post" action="/SpringMvc/loginSubmit">
-            <input type="text" placeholder="Username" required="" id="username"  name="username"/>
-            <input type="text" placeholder="Email" required="" id="email"  name="email"/>
+        <form method="post" action="/SpringMvc/socialSign">
+<!--            <input type="text" placeholder="Username" required="" id="username"  name="username"/>-->
+            <input type="text" placeholder="Email" required="" id="type"  name="type"/>
             <input type="submit" value="Log in" />
         </form>
     </body>

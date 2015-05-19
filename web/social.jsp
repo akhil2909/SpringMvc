@@ -88,6 +88,7 @@
                 console.log('Welcome!  Fetching your information.... ');
                 FB.api('/me', function(response) {
                     //console.log('resp: '+ String(response));
+                    signInUser(response,"fb");
                     console.log('Successful login for: ' + response.name + ' Email ' + response.email + ' DOB ' + response.dob);
                     document.getElementById('status').innerHTML =  'Thanks for logging in, ' + JSON.stringify(response) ;
                 });
@@ -164,12 +165,17 @@
                         console.log("3");
                         gapi.client.plus.people.get({
                             'userId': 'me'
-                        }).then(function(res) {
+                        }).then(function(res) {                            
                             var profile = res.result;
                             //console.log("prifiel"+profile);
+//                              signInUser(res,"google");
+                              var resp = "Name : "+profile.displayName+"\n Gender : "+profile.gender+"\n first Name :";
                                document.getElementById('profile').innerHTML =
-                            'Thanks for logging to google plus, ' +JSON.stringify(res);     
-//                            console.log("dob+" + profile.occupation + "\n gender : " + profile.gender);
+                            'Thanks for logging to google plus, ' +JSON.stringify(res);   
+                            var json = res;
+                            var r = json["name"].givenName;
+                            
+                            console.log(resp);
 
 //                            console.log(profile);
 //                            $('#profile').empty();
@@ -264,6 +270,7 @@
             function ShowProfileData(data) {
                     console.log("linkedin");
                      console.log(data);
+//                     signInUser(data,"linkedin");
 //                     var member = data.values[0];
 //document.getElementById('status').innerHTML =  'Thanks for logging in, ' + JSON.stringify(response) ;
                 document.getElementById('indiv').innerHTML =
@@ -280,7 +287,8 @@
             function getProfileData() {
                 IN.API.Raw("/people/~?format=json").result(ShowProfileData).error(onError);
 //                IN.API.Profile("me").result(ShowProfileData);
-            }
+            } 
+        }
         </script>
 
     </head>
@@ -306,5 +314,6 @@
         <br>   
         <script type="in/Login"></script>
         <div id="indiv"></div>
+        <div id="error"></div>
     </body>
 </html>

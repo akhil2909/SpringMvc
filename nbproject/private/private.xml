@@ -5,13 +5,11 @@
         <group>
             <file>file:/E:/workspace/SpringMvc/web/social.jsp</file>
             <file>file:/E:/workspace/SpringMvc/loginsocial.html</file>
-            <file>file:/E:/workspace/SpringMvc/web/sociallogin.html</file>
             <file>file:/E:/workspace/SpringMvc/src/java/org/springmvc/controller/HelloController.java</file>
             <file>file:/E:/workspace/SpringMvc/web/WEB-INF/web.xml</file>
             <file>file:/E:/workspace/SpringMvc/src/java/org/springmvc/controller/LoginController.java</file>
             <file>file:/E:/workspace/SpringMvc/web/index.jsp</file>
             <file>file:/E:/workspace/SpringMvc/web/login1.jsp</file>
-            <file>file:/E:/workspace/SpringMvc/web/welcome.jsp</file>
             <file>file:/E:/workspace/SpringMvc/web/WEB-INF/spring-dispatcher-servlet.xml</file>
         </group>
     </open-files>

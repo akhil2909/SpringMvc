@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -58,4 +59,19 @@ public class LoginController {
         return model;
     }
 
-    }
+    @RequestMapping(value = "/socialSign", method = RequestMethod.POST)
+    public ModelAndView  userSignIn(@RequestParam("type") String type) {
+        ModelAndView model = new ModelAndView("welcome");
+        model.addObject("headerMessage", type);
+        return model;
+      }
+    
+     @RequestMapping(value = "/test", method = RequestMethod.GET)
+     public ModelAndView  userTest() {
+        ModelAndView model = new ModelAndView("login");
+        model.addObject("headerMessage", "Model Attribute");
+        return model;
+      }
+    
+    
+}
